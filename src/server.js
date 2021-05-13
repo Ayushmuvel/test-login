@@ -12,7 +12,7 @@ var app = express();
 
 //system variables
 dotenv.config()
-const express_port = process.env.Server_Port || 7700;
+const express_port = process.env.PORT || 7700;
 
 //body parsera
 app.use(bodyParser.urlencoded({ extended: true }));
