@@ -14,7 +14,7 @@ class UserController {
     userLogin = async(req, res, next) => {
         this.checkValidation(req);
 
-        this.hashPassword(req)
+        // this.hashPassword(req)
 
         const { email, password: pass } = req.body;
 
