@@ -35,9 +35,11 @@ app.use(errorMiddleware);
 
 //calling routes files
 const userRouter = require('./routes/user.route');
+const customerRouter = require('./routes/customer.routes');
 
 // redirecting routes
 app.use(`/user`, userRouter);
+app.use(`/customer`, customerRouter);
 
 // end point 
 
