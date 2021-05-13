@@ -28,11 +28,14 @@ const auth = (...roles) => {
             // check if the current user is the owner user
             const ownerAuthorized = req.query.email == user.email;
 
-            // if the current user is not the owner and
-            // if the user role don't have the permission to do this action.
-            // the user will get this error
-            if (!ownerAuthorized && roles.length && !roles.includes(user.User_type)) {
+            // authorised user
+            if (!ownerAuthorized) {
                 throw new HttpException(401, 'Unauthorized');
+            }
+
+            // user role check
+            if (roles.length && !roles.includes(user.User_type)) {
+                throw new HttpException(401, 'Acess denied');
             }
 
             // if the user has permissions
