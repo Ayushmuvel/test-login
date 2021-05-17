@@ -14,13 +14,13 @@ class UserController {
     userLogin = async(req, res, next) => {
         this.checkValidation(req);
 
-        // this.hashPassword(req)
+        this.hashPassword(req)
 
         const { email, password: pass } = req.body;
 
         const user = await UserModel.findOne({ email });
 
-        if (!user) {
+        if (!user || user.Active == 0) {
             throw new HttpException(401, 'Unable to login!');
         }
 
